@@ -1,4 +1,4 @@
-import { Controller, Get, Body, Req } from '@nestjs/common';
+import { Controller, Get, Body, Req, Query } from '@nestjs/common';
 
 @Controller('cats')
 export class CatsController {
@@ -8,11 +8,11 @@ export class CatsController {
     }
     @Get('findone')
     findOne() {
-        return 'this action will fi'
+        return 'this action will fi';
     }
     @Get()
-    findall(@Req() request) {
-        return 'this action returns all cats'
+    findall(@Query() myquery) {
+        return 'this is query2:' + myquery;
     }
 
 }
