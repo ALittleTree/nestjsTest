@@ -9,25 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const common_1 = require("@nestjs/common");
-const teacher_module_1 = require("./teacher/teacher.module");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const typeorm_1 = require("@nestjs/typeorm");
-const typeorm_2 = require("typeorm");
-let AppModule = class AppModule {
-    constructor(connection) {
-        this.connection = connection;
-    }
+const typeorm_1 = require("typeorm");
+let Teacher = class Teacher {
 };
-AppModule = __decorate([
-    common_1.Module({
-        imports: [teacher_module_1.TeacherModule,
-            typeorm_1.TypeOrmModule.forRoot()],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
-    }),
-    __metadata("design:paramtypes", [typeorm_2.Connection])
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+__decorate([
+    typeorm_1.PrimaryGeneratedColumn(),
+    __metadata("design:type", Number)
+], Teacher.prototype, "id", void 0);
+__decorate([
+    typeorm_1.Column({ length: 500 }),
+    __metadata("design:type", String)
+], Teacher.prototype, "name", void 0);
+__decorate([
+    typeorm_1.Column('text'),
+    __metadata("design:type", String)
+], Teacher.prototype, "age", void 0);
+__decorate([
+    typeorm_1.Column('text'),
+    __metadata("design:type", String)
+], Teacher.prototype, "gender", void 0);
+Teacher = __decorate([
+    typeorm_1.Entity()
+], Teacher);
+exports.Teacher = Teacher;
+//# sourceMappingURL=teacher.entity.js.map

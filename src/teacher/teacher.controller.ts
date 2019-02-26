@@ -1,17 +1,17 @@
 import { Controller, Get, Body, Req, Query, Post, HttpCode, Res, Param, Put, Delete } from '@nestjs/common';
-import { CreateTeacherDto } from './teacherDto';
+import { Teacher } from './teacher.entity';
 import { TeacherService } from './teacher.service';
-
+import { async } from 'rxjs/internal/scheduler/async';
 
 @Controller('teacher')
 export class TeacherController {
     constructor(private readonly teacherService: TeacherService) {
 
-     }
+    }
 
     @Post()
-    async create(@Body() createTeacherDto: CreateTeacherDto) {
-        this.teacherService.create(createTeacherDto);
+    async create(@Body() createTeacherDto: Teacher) {
+        await this.teacherService.create(createTeacherDto);
     }
 
     @Get()
